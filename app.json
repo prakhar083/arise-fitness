@@ -1,25 +1,70 @@
 {
   "expo": {
-    "name": "arise-fitness",
+    "name": "Arise",
     "slug": "arise-fitness",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.prakhar.arise",
+      "infoPlist": {
+        "NSMotionUsageDescription": "Arise reads your step count to track the 10K Steps daily quest."
+      },
+      "appleTeamId": "6K4M62S62X"
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#161826",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.prakhar.arise",
+      "permissions": [
+        "android.permission.ACTIVITY_RECOGNITION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "@react-native-community/datetimepicker",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Arise uses your photos for weekly progress check-ins.",
+          "cameraPermission": "Arise uses the camera for weekly progress photos."
+        }
+      ],
+      [
+        "@kingstinct/react-native-healthkit",
+        {
+          "NSHealthShareUsageDescription": "Arise reads your step count from Apple Health to track your daily steps quest.",
+          "NSHealthUpdateUsageDescription": false,
+          "background": false
+        }
+      ],
+      "./plugins/withoutPushEntitlement",
+      "expo-notifications",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#161826",
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 120
+        }
+      ],
+      "./plugins/withSceneLifecycle"
+    ],
+    "scheme": "arise",
+    "backgroundColor": "#161826",
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
